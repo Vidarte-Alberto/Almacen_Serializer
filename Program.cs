@@ -19,7 +19,8 @@ public class Program
             Console.WriteLine("2. Leer Profesores");
             Console.WriteLine("3. Actualizar Profesor");
             Console.WriteLine("4. Eliminar Profesor");
-            Console.WriteLine("5. Salir");
+            Console.WriteLine("5. Cambiar Contraseña");
+            Console.WriteLine("6. Salir");
             Console.Write("Opción: ");
 
             int opcion;
@@ -78,17 +79,49 @@ public class Program
 
     private static void CrearProfesor()
     {
-        Console.Write("Nombre completo del profesor: ");
-        string nombreCompleto = Console.ReadLine();
-        Console.Write("Nomina: ");
-        string nominEncriptada = Console.ReadLine();
-        Console.Write("Password: ");
-        string passwordEncriptada = Console.ReadLine();
+        string nombreCompleto = string.Empty;
+        while (string.IsNullOrWhiteSpace(nombreCompleto))
+        {
+            Console.Write("Nombre completo del profesor: ");
+            nombreCompleto = Console.ReadLine() ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(nombreCompleto))
+            {
+                Console.WriteLine("El nombre no puede estar vacío.");
+            }
+        }
+        string nominEncriptada = string.Empty;
+        while (string.IsNullOrWhiteSpace(nominEncriptada))
+        {
+            Console.Write("Nomina: ");
+            nominEncriptada = Console.ReadLine() ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(nominEncriptada))
+            {
+                Console.WriteLine("La nomina no puede estar vacía.");
+            }
+        }
+        string passwordEncriptada = string.Empty;
+        while (string.IsNullOrWhiteSpace(passwordEncriptada))
+        {
+            Console.Write("Password: ");
+            passwordEncriptada = Console.ReadLine() ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(passwordEncriptada))
+            {
+                Console.WriteLine("El password no puede estar vacío.");
+            }
+        }
         Console.Write("Materias: ");
-        string materiasInput = Console.ReadLine();
+        string materiasInput = Console.ReadLine() ?? string.Empty;
         string[] materiasQueImparte = materiasInput.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-        Console.Write("Division: ");
-        string division = Console.ReadLine();
+        string division = string.Empty;
+        while (string.IsNullOrWhiteSpace(division))
+        {
+            Console.Write("Division: ");
+            division = Console.ReadLine() ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(division))
+            {
+                Console.WriteLine("La division no puede estar vacía.");
+            }
+        }
 
         // Leer la lista de profesores desde el archivo JSON
         List<Profesor> profesores = LeerProfesoresDesdeJson();
@@ -141,12 +174,21 @@ public class Program
         if (int.TryParse(Console.ReadLine(), out int idProfesor))
         {
             List<Profesor> profesores = LeerProfesoresDesdeJson();
-            Profesor profesorExistente = profesores.FirstOrDefault(p => p.ProfesorId == idProfesor);
+            Profesor? profesorExistente = profesores.FirstOrDefault(p => p.ProfesorId == idProfesor);
 
             if (profesorExistente != null)
             {
                 Console.Write("Nuevo nombre completo del profesor: ");
-                string nuevoNombreCompleto = Console.ReadLine();
+                string nuevoNombreCompleto = string.Empty;
+                while (string.IsNullOrWhiteSpace(nuevoNombreCompleto))
+                {
+                    nuevoNombreCompleto = Console.ReadLine() ?? string.Empty;
+                    if (string.IsNullOrWhiteSpace(nuevoNombreCompleto))
+                    {
+                        Console.WriteLine("El nombre no puede estar vacío.");
+                    }
+                }
+
                 // Puedes continuar solicitando otros datos que desees actualizar.
 
                 // Actualiza los datos del profesor existente
@@ -175,7 +217,7 @@ public class Program
         if (int.TryParse(Console.ReadLine(), out int idProfesor))
         {
             List<Profesor> profesores = LeerProfesoresDesdeJson();
-            Profesor profesorExistente = profesores.FirstOrDefault(p => p.ProfesorId == idProfesor);
+            Profesor? profesorExistente = profesores.FirstOrDefault(p => p.ProfesorId == idProfesor);
 
             if (profesorExistente != null)
             {
@@ -204,12 +246,20 @@ public class Program
         if (int.TryParse(Console.ReadLine(), out int idProfesor))
         {
             List<Profesor> profesores = LeerProfesoresDesdeJson();
-            Profesor profesorExistente = profesores.FirstOrDefault(p => p.ProfesorId == idProfesor);
+            Profesor? profesorExistente = profesores.FirstOrDefault(p => p.ProfesorId == idProfesor);
 
             if (profesorExistente != null)
             {
                 Console.Write("Nuevo password: ");
-                string nuevoPassword = Console.ReadLine();
+                string nuevoPassword = string.Empty;
+                while (string.IsNullOrWhiteSpace(nuevoPassword))
+                {
+                    nuevoPassword = Console.ReadLine() ?? string.Empty;
+                    if (string.IsNullOrWhiteSpace(nuevoPassword))
+                    {
+                        Console.WriteLine("El password no puede estar vacío.");
+                    }
+                }
 
                 // Actualiza los datos del profesor existente
                 profesorExistente.PasswordEncriptada = Profesor.Encriptar(nuevoPassword);
@@ -236,7 +286,7 @@ public class Program
         if (File.Exists(ProfesorFilePath))
         {
             string json = File.ReadAllText(ProfesorFilePath);
-            return JsonConvert.DeserializeObject<List<Profesor>>(json);
+            return JsonConvert.DeserializeObject<List<Profesor>>(json) ?? new List<Profesor>();
         }
         else
         {

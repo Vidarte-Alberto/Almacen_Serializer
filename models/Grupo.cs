@@ -8,6 +8,7 @@ public class Grupo
 
     public Grupo()
     {
+        NombreGrupo = string.Empty;
         ClasesProfesor = new List<ClaseProfesor>();
     }
 

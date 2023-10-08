@@ -15,6 +15,11 @@ public class Profesor
 
     public Profesor()
     {
+        NombreCompleto = string.Empty;
+        NominaEncriptada = string.Empty;
+        PasswordEncriptada = string.Empty;
+        MateriasQueImparte = new string[0];
+        Division = string.Empty;
         ClasesProfesor = new List<ClaseProfesor>();
     }
 
@@ -27,6 +32,7 @@ public class Profesor
         PasswordEncriptada = Encriptar(password);
         MateriasQueImparte = materias;
         Division = division;
+        ClasesProfesor = new List<ClaseProfesor>();
     }
     // Método para encriptar una cadena
     public static string Encriptar(string texto)
@@ -79,11 +85,12 @@ public class Profesor
 
     public static byte[] GenerateRandomKey(int length)
     {
-        using (var rng = new RNGCryptoServiceProvider())
+        using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
         {
             byte[] key = new byte[length];
             rng.GetBytes(key);
             return key;
         }
     }
+
 }

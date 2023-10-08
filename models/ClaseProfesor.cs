@@ -15,6 +15,14 @@ public class ClaseProfesor
 
     public ClaseProfesor()
     {
+        ProfesorId = 0;
+        SalonId = 0;
+        GrupoId = 0;
+        FechaInicio = DateTime.Now;
+        FechaFin = DateTime.Now;
+        Profesor = new Profesor();
+        Salon = new Salon();
+        Grupo = new Grupo();
     }
 
     public ClaseProfesor(int profesorId, int salonId, int grupoId, DateTime fechaInicio, DateTime fechaFin)
@@ -24,5 +32,8 @@ public class ClaseProfesor
         GrupoId = grupoId;
         FechaInicio = fechaInicio;
         FechaFin = fechaFin;
+        Profesor = new Profesor();
+        Salon = new Salon();
+        Grupo = new Grupo();
     }
 }

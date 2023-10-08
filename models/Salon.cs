@@ -8,6 +8,7 @@ public class Salon
 
     public Salon()
     {
+        NombreSalon = string.Empty;
         ClasesProfesor = new List<ClaseProfesor>();
     }
 
