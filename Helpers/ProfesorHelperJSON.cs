@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 
-public class ProfesorHelper
+public class ProfesorHelperJSON
 {
     private List<Profesor> profesores;
     private const string fileName = "profesores.json";
 
-    public ProfesorHelper()
+    public ProfesorHelperJSON()
     {
         // Inicializa la lista de profesores desde el archivo JSON si existe, o crea una nueva lista
         if (File.Exists(fileName))
@@ -95,7 +95,7 @@ public class ProfesorHelper
         return profesores;
     }
 
-    public void LeerProfesores(string ProfesorFilePath)
+    public void LeerProfesores()
     {
         if (profesores.Any())
         {

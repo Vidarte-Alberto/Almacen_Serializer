@@ -20,13 +20,15 @@ public class Program
         string[] materiasQueImparte = new string[0];
         string division = string.Empty;
 
-        var profesoresHelper = new ProfesorHelper();
+        var profesoresHelperJSON = new ProfesorHelperJSON();
+        var profesoresHelperXML = new ProfesorHelperXML();
         var encriptacionHelper = new EncriptacionHelper();
-        var almacenistaHelper = new AlmacenistaHelper();
+        var almacenistaHelperJSON = new AlmacenistaHelperJSON();
+        var almacenistaHelperXML = new AlmacenistaHelperXML();
         bool auth = false;
+        Console.Clear();
         while (auth == false)
         {
-            Console.Clear();
             Console.WriteLine("Bienvenido al sistema de almacen.");
             Console.WriteLine("Selecciona una opción:");
             Console.WriteLine("1. Registrar un almacenista");
@@ -59,7 +61,8 @@ public class Program
                                 Console.WriteLine("El password no puede estar vacío.");
                             }
                         }
-                        almacenistaHelper.CrearAlmacenista(nombreCompleto, passwordEncriptada);
+                        almacenistaHelperJSON.CrearAlmacenista(nombreCompleto, passwordEncriptada);
+                        almacenistaHelperXML.CrearAlmacenista(nombreCompleto, passwordEncriptada);
                         break;
                     case 2:
                         int Count = 0;
@@ -69,7 +72,7 @@ public class Program
                             string nombre = Console.ReadLine() ?? string.Empty;
                             Console.Write("Password: ");
                             string password = Console.ReadLine() ?? string.Empty;
-                            auth = almacenistaHelper.IniciarSesion(nombre, password);
+                            auth = almacenistaHelperJSON.IniciarSesion(nombre, password);
                             if (auth == false)
                             {
                                 Console.WriteLine("Nombre o password incorrectos.");
@@ -86,6 +89,7 @@ public class Program
                         Environment.Exit(0);
                         break;
                     default:
+                        Console.Clear();
                         Console.WriteLine("Opción no válida. Introduce un número del 1 al 5.");
                         break;
                 }
@@ -159,10 +163,12 @@ public class Program
                                 Console.WriteLine("La division no puede estar vacía.");
                             }
                         }
-                        profesoresHelper.CrearProfesor(nombreCompleto, nominaEncriptada, passwordEncriptada, materiasQueImparte, division);
+                        profesoresHelperJSON.CrearProfesor(nombreCompleto, nominaEncriptada, passwordEncriptada, materiasQueImparte, division);
+                        profesoresHelperXML.CrearProfesor(nombreCompleto, nominaEncriptada, passwordEncriptada, materiasQueImparte, division);
                         break;
                     case 2:
-                        profesoresHelper.LeerProfesores(ProfesorFilePath);
+                        //profesoresHelperJSON.LeerProfesores();
+                        profesoresHelperXML.LeerProfesores();
                         break;
                     case 3:
                         Console.Write("ID del Profesor: ");
@@ -178,19 +184,22 @@ public class Program
                         materiasQueImparte = materiasInput.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                         Console.WriteLine("Division: ");
                         division = Console.ReadLine() ?? string.Empty;
-                        profesoresHelper.EditarProfesor(id, nombreCompleto, nominaEncriptada, passwordEncriptada, materiasQueImparte, division);
+                        profesoresHelperJSON.EditarProfesor(id, nombreCompleto, nominaEncriptada, passwordEncriptada, materiasQueImparte, division);
+                        profesoresHelperXML.EditarProfesor(id, nombreCompleto, nominaEncriptada, passwordEncriptada, materiasQueImparte, division);
                         break;
                     case 4:
                         Console.Write("ID del Profesor: ");
                         id = int.Parse(Console.ReadLine() ?? string.Empty);
-                        profesoresHelper.EliminarProfesor(id);
+                        profesoresHelperJSON.EliminarProfesor(id);
+                        profesoresHelperXML.EliminarProfesor(id);
                         break;
                     case 5:
                         Console.Write("ID del Profesor: ");
                         id = int.Parse(Console.ReadLine() ?? string.Empty);
                         Console.Write("Password: ");
                         passwordEncriptada = Console.ReadLine() ?? string.Empty;
-                        profesoresHelper.EditarPassProfesor(id, passwordEncriptada);
+                        profesoresHelperJSON.EditarPassProfesor(id, passwordEncriptada);
+                        profesoresHelperXML.EditarPassProfesor(id, passwordEncriptada);
                         break;
                     case 6:
                         Environment.Exit(0);

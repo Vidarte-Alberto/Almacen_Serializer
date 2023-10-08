@@ -1,20 +1,24 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Xml.Serialization;
 using Newtonsoft.Json;
 
-public class AlmacenistaHelper
+public class AlmacenistaHelperXML
 {
     private List<Almacenista> almacenistas;
-    private const string fileName = "almacenistas.json";
+    private const string fileName = "almacenistas.xml";
 
-    public AlmacenistaHelper()
+    public AlmacenistaHelperXML()
     {
-        // Inicializa la lista de almacenistas desde el archivo JSON si existe, o crea una nueva lista
+        // Inicializa la lista de almacenistas desde el archivo XML si existe, o crea una nueva lista
         if (File.Exists(fileName))
         {
-            string json = File.ReadAllText(fileName);
-            almacenistas = JsonConvert.DeserializeObject<List<Almacenista>>(json) ?? new List<Almacenista>();
+            using (var streamReader = new StreamReader(fileName))
+            {
+                var serializer = new XmlSerializer(typeof(List<Almacenista>));
+                almacenistas = (List<Almacenista>)serializer.Deserialize(streamReader) ?? new List<Almacenista>();
+            }
         }
         else
         {
@@ -24,9 +28,12 @@ public class AlmacenistaHelper
 
     public void GuardarCambios()
     {
-        // Guarda la lista de almacenistas en el archivo JSON
-        string json = JsonConvert.SerializeObject(almacenistas);
-        File.WriteAllText(fileName, json);
+        // Guarda la lista de almacenistas en el archivo XML
+        using (var streamWriter = new StreamWriter(fileName))
+        {
+            var serializer = new XmlSerializer(typeof(List<Almacenista>));
+            serializer.Serialize(streamWriter, almacenistas);
+        }
     }
 
     public void CrearAlmacenista(string nombreCompleto, string password)
