@@ -24,4 +24,27 @@
     <Division>Informatica</Division>
     <ClasesProfesor />
   </Profesor>
+  <Profesor>
+    <ProfesorId>3</ProfesorId>
+    <NombreCompleto>Padilla Hernandez Ruy Felipe</NombreCompleto>
+    <NominaEncriptada>BGhaELjYWTouvdO4mY5Hqg==</NominaEncriptada>
+    <PasswordEncriptada>g6YLAhsXi8d/bQbL3R+cuA==</PasswordEncriptada>
+    <MateriasQueImparte>
+      <string>Programacion Avanzada I</string>
+      <string> Programacion Avanzada II</string>
+    </MateriasQueImparte>
+    <Division>Informatica</Division>
+    <ClasesProfesor />
+  </Profesor>
+  <Profesor>
+    <ProfesorId>4</ProfesorId>
+    <NombreCompleto>Brambila Angel</NombreCompleto>
+    <NominaEncriptada>NOMI1231</NominaEncriptada>
+    <PasswordEncriptada>myRLKDh4vkVSivzR7e3LWA==</PasswordEncriptada>
+    <MateriasQueImparte>
+      <string>Programacion Avanzada II</string>
+    </MateriasQueImparte>
+    <Division>Informatica</Division>
+    <ClasesProfesor />
+  </Profesor>
 </ArrayOfProfesor>

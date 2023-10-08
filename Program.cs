@@ -108,6 +108,7 @@ public class Program
                         encriptacionHelper.CrearClavesEncriptacion();
                         break;
                     case 1:
+                        Console.Clear();
                         Console.Write("Nombre completo del profesor: ");
                         nombreCompleto = Console.ReadLine() ?? string.Empty;
                         nombreCompleto = VariableHelper.StringNotEmpty(nombreCompleto);
@@ -125,12 +126,15 @@ public class Program
                         division = VariableHelper.StringNotEmpty(division);
                         profesoresHelperJSON.CrearProfesor(nombreCompleto, nominaEncriptada, passwordEncriptada, materiasQueImparte, division);
                         profesoresHelperXML.CrearProfesor(nombreCompleto, nominaEncriptada, passwordEncriptada, materiasQueImparte, division);
+                        Console.Clear();
                         break;
                     case 2:
                         //profesoresHelperJSON.LeerProfesores();
+                        Console.Clear();
                         profesoresHelperXML.LeerProfesores();
                         break;
                     case 3:
+                        Console.Clear();
                         Console.Write("ID del Profesor: ");
                         id = int.Parse(Console.ReadLine() ?? string.Empty);
                         Console.WriteLine("Nombre completo del Profesor: ");
@@ -146,17 +150,21 @@ public class Program
                         division = Console.ReadLine() ?? string.Empty;
                         profesoresHelperJSON.EditarProfesor(id, nombreCompleto, nominaEncriptada, passwordEncriptada, materiasQueImparte, division);
                         profesoresHelperXML.EditarProfesor(id, nombreCompleto, nominaEncriptada, passwordEncriptada, materiasQueImparte, division);
+                        Console.Clear();
                         break;
                     case 4:
                         Console.Write("ID del Profesor: ");
                         id = int.Parse(Console.ReadLine() ?? string.Empty);
                         profesoresHelperJSON.EliminarProfesor(id);
                         profesoresHelperXML.EliminarProfesor(id);
+                        Console.Clear();
                         break;
                     case 5:
                         opcion2 = string.Empty;
                         while (opcion2 != "1" && opcion2 != "2")
                         {
+                            Console.Clear();
+                            Console.WriteLine("Cambiar Contraseña");
                             Console.WriteLine("Selecciona una opción:");
                             Console.WriteLine("1. Cambiar contraseña de un profesor");
                             Console.WriteLine("2. Cambiar contraseña de un almacenista");
@@ -187,12 +195,14 @@ public class Program
                             almacenistaHelperJSON.EditarPassAlmacenista(id, passwordEncriptada);
                             almacenistaHelperXML.EditarPassAlmacenista(id, passwordEncriptada);
                         }
+                        Console.Clear();
                         break;
                     case 6:
                         opcion2 = string.Empty;
                         while (opcion2 != "1" && opcion2 != "2")
                         {
-                            Console.WriteLine("Selecciona una opción:");
+                            Console.Clear();
+                            Console.WriteLine("Selecciona una opción para tus reportes:");
                             Console.WriteLine("1. Reporte Almacenistas");
                             Console.WriteLine("2. Reporte Profesores");
                             Console.Write("Opción: ");
@@ -210,6 +220,7 @@ public class Program
                         {
                             ReportesProfesores();
                         }
+                        Console.Clear();
                         break;
                     case 7:
                         Environment.Exit(0);
@@ -228,6 +239,8 @@ public class Program
 
     private static void ReportesAlmacenistas()
     {
+        Console.Clear();
+        Console.WriteLine("Reportes Almacenistas");
         Console.WriteLine("Selecciona una opción:");
         Console.WriteLine("1. Reporte de Almacenistas por Nombre");
         Console.Write("Opción: ");
@@ -246,7 +259,8 @@ public class Program
     {
         var generadorJSON = new ReporteProfesorJSON();
         var generadorXML = new ReporteProfesorXML();
-
+        Console.Clear();
+        Console.WriteLine("Reportes Profesores");
         Console.WriteLine("Selecciona una opción:");
         Console.WriteLine("1. Reporte de Profesores por Nombre Ascendente");
         Console.WriteLine("2. Reporte de Profesores por Nomina Ascendente");
@@ -255,27 +269,33 @@ public class Program
         Console.WriteLine("5. Reporte de Profesores por ID Ascendente");
         Console.Write("Opción: ");
         int opcion = int.Parse(Console.ReadLine() ?? string.Empty);
+        Console.Clear();
         switch (opcion)
         {
             case 1:
                 generadorJSON.GenerarReportePorNombreAscendente();
                 generadorXML.GenerarReportePorNombreAscendente();
+                Console.Clear();
                 break;
             case 2:
                 generadorJSON.GenerarReportePorNominaAscendente();
                 generadorXML.GenerarReportePorNominaAscendente();
+                Console.Clear();
                 break;
             case 3:
                 generadorJSON.GenerarReportePorDivisionAscendente();
                 generadorXML.GenerarReportePorDivisionAscendente();
+                Console.Clear();
                 break;
             case 4:
                 generadorJSON.GenerarReportePorMateriasAscendente();
                 generadorXML.GenerarReportePorMateriasAscendente();
+                Console.Clear();
                 break;
             case 5:
                 generadorJSON.GenerarReportePorIDAscendente();
                 generadorXML.GenerarReportePorIDAscendente();
+                Console.Clear();
                 break;
             default:
                 Console.WriteLine("Opción no válida. Introduce un número del 1 al 2.");
