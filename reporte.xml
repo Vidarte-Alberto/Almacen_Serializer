@@ -3,8 +3,8 @@
   <Profesor>
     <ProfesorId>1</ProfesorId>
     <NombreCompleto>Vidarte Rodriguez Alberto Leonel</NombreCompleto>
-    <NominaEncriptada>GZFkDsfQO4W8susYyRZp4g==</NominaEncriptada>
-    <PasswordEncriptada>GuThyHavGG74UO3476VbVA==</PasswordEncriptada>
+    <NominaEncriptada>NOMI300</NominaEncriptada>
+    <PasswordEncriptada>mexicanos</PasswordEncriptada>
     <MateriasQueImparte>
       <string>Programacion Avanzada II</string>
       <string> Sistemas Embebidos I</string>
@@ -15,8 +15,8 @@
   <Profesor>
     <ProfesorId>2</ProfesorId>
     <NombreCompleto>Rivera Arias Minerva Araceli</NombreCompleto>
-    <NominaEncriptada>VqN6v6yEWUf/UfpnDctByQ==</NominaEncriptada>
-    <PasswordEncriptada>q1+QkYFbRftobfFCREAFFw==</PasswordEncriptada>
+    <NominaEncriptada>NOMI100</NominaEncriptada>
+    <PasswordEncriptada>minerva</PasswordEncriptada>
     <MateriasQueImparte>
       <string>Sistemas Inteligentes</string>
       <string> Programacion WEB I</string>

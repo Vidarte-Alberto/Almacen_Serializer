@@ -53,6 +53,17 @@ public class AlmacenistaHelperJSON
         }
     }
 
+    public void EditarPassAlmacenista(int id, string newPassword)
+    {
+        // Edita contraseña de un almacenista por id
+        var almacenista = almacenistas.Find(a => a.AlmacenistaId == id);
+        if (almacenista != null)
+        {
+            almacenista.PasswordEncriptada = EncriptacionHelper.Encriptar(newPassword);
+            GuardarCambios();
+        }
+    }
+
     public void EliminarAlmacenista(string nombreCompleto)
     {
         // Elimina un almacenista por nombre

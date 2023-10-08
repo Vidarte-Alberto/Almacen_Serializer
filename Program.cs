@@ -19,6 +19,7 @@ public class Program
         string materiasInput = string.Empty;
         string[] materiasQueImparte = new string[0];
         string division = string.Empty;
+        string opcion2 = string.Empty;
 
         var profesoresHelperJSON = new ProfesorHelperJSON();
         var profesoresHelperXML = new ProfesorHelperXML();
@@ -41,26 +42,12 @@ public class Program
                 switch (opcion)
                 {
                     case 1:
-                        nombreCompleto = string.Empty;
-                        while (string.IsNullOrWhiteSpace(nombreCompleto))
-                        {
-                            Console.Write("Nombre completo del Almacenista: ");
-                            nombreCompleto = Console.ReadLine() ?? string.Empty;
-                            if (string.IsNullOrWhiteSpace(nombreCompleto))
-                            {
-                                Console.WriteLine("El nombre no puede estar vacío.");
-                            }
-                        }
-                        passwordEncriptada = string.Empty;
-                        while (string.IsNullOrWhiteSpace(passwordEncriptada))
-                        {
-                            Console.Write("Password: ");
-                            passwordEncriptada = Console.ReadLine() ?? string.Empty;
-                            if (string.IsNullOrWhiteSpace(passwordEncriptada))
-                            {
-                                Console.WriteLine("El password no puede estar vacío.");
-                            }
-                        }
+                        Console.Write("Nombre completo del Almacenista: ");
+                        nombreCompleto = Console.ReadLine() ?? string.Empty;
+                        nombreCompleto = VariableHelper.StringNotEmpty(nombreCompleto);
+                        Console.Write("Password: ");
+                        passwordEncriptada = Console.ReadLine() ?? string.Empty;
+                        passwordEncriptada = VariableHelper.StringNotEmpty(passwordEncriptada);
                         almacenistaHelperJSON.CrearAlmacenista(nombreCompleto, passwordEncriptada);
                         almacenistaHelperXML.CrearAlmacenista(nombreCompleto, passwordEncriptada);
                         break;
@@ -107,8 +94,9 @@ public class Program
             Console.WriteLine("2. Leer Profesores");
             Console.WriteLine("3. Actualizar Profesor");
             Console.WriteLine("4. Eliminar Profesor");
-            Console.WriteLine("5. Cambiar Contraseña");
-            Console.WriteLine("6. Salir");
+            Console.WriteLine("5. Cambiar Contraseña (Almacenista/Profesor)");
+            Console.WriteLine("6. Reportes");
+            Console.WriteLine("7. Salir");
             Console.Write("Opción: ");
 
             int opcion;
@@ -120,49 +108,21 @@ public class Program
                         encriptacionHelper.CrearClavesEncriptacion();
                         break;
                     case 1:
-                        nombreCompleto = string.Empty;
-                        while (string.IsNullOrWhiteSpace(nombreCompleto))
-                        {
-                            Console.Write("Nombre completo del profesor: ");
-                            nombreCompleto = Console.ReadLine() ?? string.Empty;
-                            if (string.IsNullOrWhiteSpace(nombreCompleto))
-                            {
-                                Console.WriteLine("El nombre no puede estar vacío.");
-                            }
-                        }
-                        nominaEncriptada = string.Empty;
-                        while (string.IsNullOrWhiteSpace(nominaEncriptada))
-                        {
-                            Console.Write("Nomina: ");
-                            nominaEncriptada = Console.ReadLine() ?? string.Empty;
-                            if (string.IsNullOrWhiteSpace(nominaEncriptada))
-                            {
-                                Console.WriteLine("La nomina no puede estar vacía.");
-                            }
-                        }
-                        passwordEncriptada = string.Empty;
-                        while (string.IsNullOrWhiteSpace(passwordEncriptada))
-                        {
-                            Console.Write("Password: ");
-                            passwordEncriptada = Console.ReadLine() ?? string.Empty;
-                            if (string.IsNullOrWhiteSpace(passwordEncriptada))
-                            {
-                                Console.WriteLine("El password no puede estar vacío.");
-                            }
-                        }
+                        Console.Write("Nombre completo del profesor: ");
+                        nombreCompleto = Console.ReadLine() ?? string.Empty;
+                        nombreCompleto = VariableHelper.StringNotEmpty(nombreCompleto);
+                        Console.Write("Nomina: ");
+                        nominaEncriptada = Console.ReadLine() ?? string.Empty;
+                        nominaEncriptada = VariableHelper.StringNotEmpty(nominaEncriptada);
+                        Console.Write("Password: ");
+                        passwordEncriptada = Console.ReadLine() ?? string.Empty;
+                        passwordEncriptada = VariableHelper.StringNotEmpty(passwordEncriptada);
                         Console.Write("Materias: ");
                         materiasInput = Console.ReadLine() ?? string.Empty;
                         materiasQueImparte = materiasInput.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                        division = string.Empty;
-                        while (string.IsNullOrWhiteSpace(division))
-                        {
-                            Console.Write("Division: ");
-                            division = Console.ReadLine() ?? string.Empty;
-                            if (string.IsNullOrWhiteSpace(division))
-                            {
-                                Console.WriteLine("La division no puede estar vacía.");
-                            }
-                        }
+                        Console.Write("Division: ");
+                        division = Console.ReadLine() ?? string.Empty;
+                        division = VariableHelper.StringNotEmpty(division);
                         profesoresHelperJSON.CrearProfesor(nombreCompleto, nominaEncriptada, passwordEncriptada, materiasQueImparte, division);
                         profesoresHelperXML.CrearProfesor(nombreCompleto, nominaEncriptada, passwordEncriptada, materiasQueImparte, division);
                         break;
@@ -175,13 +135,13 @@ public class Program
                         id = int.Parse(Console.ReadLine() ?? string.Empty);
                         Console.WriteLine("Nombre completo del Profesor: ");
                         nombreCompleto = Console.ReadLine() ?? string.Empty;
-                        Console.WriteLine("Nomina: ");
+                        Console.WriteLine("Nomina (NOMIX..X): ");
                         nominaEncriptada = Console.ReadLine() ?? string.Empty;
                         Console.WriteLine("Password: ");
                         passwordEncriptada = Console.ReadLine() ?? string.Empty;
                         Console.WriteLine("Materias: ");
                         materiasInput = Console.ReadLine() ?? string.Empty;
-                        materiasQueImparte = materiasInput.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        materiasQueImparte = materiasInput.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
                         Console.WriteLine("Division: ");
                         division = Console.ReadLine() ?? string.Empty;
                         profesoresHelperJSON.EditarProfesor(id, nombreCompleto, nominaEncriptada, passwordEncriptada, materiasQueImparte, division);
@@ -194,14 +154,64 @@ public class Program
                         profesoresHelperXML.EliminarProfesor(id);
                         break;
                     case 5:
-                        Console.Write("ID del Profesor: ");
-                        id = int.Parse(Console.ReadLine() ?? string.Empty);
-                        Console.Write("Password: ");
-                        passwordEncriptada = Console.ReadLine() ?? string.Empty;
-                        profesoresHelperJSON.EditarPassProfesor(id, passwordEncriptada);
-                        profesoresHelperXML.EditarPassProfesor(id, passwordEncriptada);
+                        opcion2 = string.Empty;
+                        while (opcion2 != "1" && opcion2 != "2")
+                        {
+                            Console.WriteLine("Selecciona una opción:");
+                            Console.WriteLine("1. Cambiar contraseña de un profesor");
+                            Console.WriteLine("2. Cambiar contraseña de un almacenista");
+                            Console.Write("Opción: ");
+                            opcion2 = Console.ReadLine() ?? string.Empty;
+                            if (opcion2 != "1" && opcion2 != "2")
+                            {
+                                Console.WriteLine("Opción no válida. Introduce un número del 1 al 2.");
+                            }
+                        }
+                        if (opcion2.Equals("1"))
+                        {
+                            Console.Write("ID del Profesor: ");
+                            id = int.Parse(Console.ReadLine() ?? string.Empty);
+                            Console.Write("Password: ");
+                            passwordEncriptada = Console.ReadLine() ?? string.Empty;
+                            passwordEncriptada = VariableHelper.StringNotEmpty(passwordEncriptada);
+                            profesoresHelperJSON.EditarPassProfesor(id, passwordEncriptada);
+                            profesoresHelperXML.EditarPassProfesor(id, passwordEncriptada);
+                        }
+                        else
+                        {
+                            Console.Write("ID del Almacenista: ");
+                            id = int.Parse(Console.ReadLine() ?? string.Empty);
+                            Console.Write("Password: ");
+                            passwordEncriptada = Console.ReadLine() ?? string.Empty;
+                            passwordEncriptada = VariableHelper.StringNotEmpty(passwordEncriptada);
+                            almacenistaHelperJSON.EditarPassAlmacenista(id, passwordEncriptada);
+                            almacenistaHelperXML.EditarPassAlmacenista(id, passwordEncriptada);
+                        }
                         break;
                     case 6:
+                        opcion2 = string.Empty;
+                        while (opcion2 != "1" && opcion2 != "2")
+                        {
+                            Console.WriteLine("Selecciona una opción:");
+                            Console.WriteLine("1. Reporte Almacenistas");
+                            Console.WriteLine("2. Reporte Profesores");
+                            Console.Write("Opción: ");
+                            opcion2 = Console.ReadLine() ?? string.Empty;
+                            if (opcion2 != "1" && opcion2 != "2")
+                            {
+                                Console.WriteLine("Opción no válida. Introduce un número del 1 al 2.");
+                            }
+                        }
+                        if (opcion2.Equals("1"))
+                        {
+                            ReportesAlmacenistas();
+                        }
+                        else
+                        {
+                            ReportesProfesores();
+                        }
+                        break;
+                    case 7:
                         Environment.Exit(0);
                         break;
                     default:
@@ -213,6 +223,63 @@ public class Program
             {
                 Console.WriteLine("Opción no válida. Introduce un número del 1 al 5.");
             }
+        }
+    }
+
+    private static void ReportesAlmacenistas()
+    {
+        Console.WriteLine("Selecciona una opción:");
+        Console.WriteLine("1. Reporte de Almacenistas por Nombre");
+        Console.Write("Opción: ");
+        int opcion = int.Parse(Console.ReadLine() ?? string.Empty);
+        switch (opcion)
+        {
+            case 1:
+                break;
+            default:
+                Console.WriteLine("Opción no válida. Introduce un número del 1 al 2.");
+                break;
+        }
+
+    }
+    private static void ReportesProfesores()
+    {
+        var generadorJSON = new ReporteProfesorJSON();
+        var generadorXML = new ReporteProfesorXML();
+
+        Console.WriteLine("Selecciona una opción:");
+        Console.WriteLine("1. Reporte de Profesores por Nombre Ascendente");
+        Console.WriteLine("2. Reporte de Profesores por Nomina Ascendente");
+        Console.WriteLine("3. Reporte de Profesores por Division Ascendente");
+        Console.WriteLine("4. Reporte de Profesores por Materias Ascendente");
+        Console.WriteLine("5. Reporte de Profesores por ID Ascendente");
+        Console.Write("Opción: ");
+        int opcion = int.Parse(Console.ReadLine() ?? string.Empty);
+        switch (opcion)
+        {
+            case 1:
+                generadorJSON.GenerarReportePorNombreAscendente();
+                generadorXML.GenerarReportePorNombreAscendente();
+                break;
+            case 2:
+                generadorJSON.GenerarReportePorNominaAscendente();
+                generadorXML.GenerarReportePorNominaAscendente();
+                break;
+            case 3:
+                generadorJSON.GenerarReportePorDivisionAscendente();
+                generadorXML.GenerarReportePorDivisionAscendente();
+                break;
+            case 4:
+                generadorJSON.GenerarReportePorMateriasAscendente();
+                generadorXML.GenerarReportePorMateriasAscendente();
+                break;
+            case 5:
+                generadorJSON.GenerarReportePorIDAscendente();
+                generadorXML.GenerarReportePorIDAscendente();
+                break;
+            default:
+                Console.WriteLine("Opción no válida. Introduce un número del 1 al 2.");
+                break;
         }
     }
 }

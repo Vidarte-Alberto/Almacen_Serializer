@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "ProfesorId": 1,
+    "NombreCompleto": "Vidarte Rodriguez Alberto Leonel",
+    "NominaEncriptada": "GZFkDsfQO4W8susYyRZp4g==",
+    "PasswordEncriptada": "GuThyHavGG74UO3476VbVA==",
+    "MateriasQueImparte": ["Programacion Avanzada II", " Sistemas Embebidos I"],
+    "Division": "Informatica",
+    "ClasesProfesor": []
+  },
+  {
+    "ProfesorId": 2,
+    "NombreCompleto": "Rivera Arias Minerva Araceli",
+    "NominaEncriptada": "VqN6v6yEWUf/UfpnDctByQ==",
+    "PasswordEncriptada": "q1+QkYFbRftobfFCREAFFw==",
+    "MateriasQueImparte": ["Sistemas Inteligentes", " Programacion WEB I"],
+    "Division": "Informatica",
+    "ClasesProfesor": []
+  }
+]
