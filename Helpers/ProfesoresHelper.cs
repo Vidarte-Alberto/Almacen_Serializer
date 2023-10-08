@@ -81,8 +81,8 @@ class ProfesoresHelper
             Console.WriteLine("Listado de Profesores:");
             foreach (var profesor in profesores)
             {
-                string pass = Profesor.Desencriptar(profesor.PasswordEncriptada);
-                string nomina = Profesor.Desencriptar(profesor.NominaEncriptada);
+                string pass = EncriptacionHelper.Desencriptar(profesor.PasswordEncriptada);
+                string nomina = EncriptacionHelper.Desencriptar(profesor.NominaEncriptada);
                 Console.WriteLine($"ID: {profesor.ProfesorId}, Nomina: {nomina}, Password: {pass} , Nombre: {profesor.NombreCompleto}, Materias: {string.Join(", ", profesor.MateriasQueImparte)}, Division: {profesor.Division}");
             }
         }
@@ -186,7 +186,7 @@ class ProfesoresHelper
                 }
 
                 // Actualiza los datos del profesor existente
-                profesorExistente.PasswordEncriptada = Profesor.Encriptar(nuevoPassword);
+                profesorExistente.PasswordEncriptada = EncriptacionHelper.Encriptar(nuevoPassword);
 
                 // Guarda la lista actualizada en el archivo JSON
                 GuardarProfesoresEnJson(profesores, ProfesorFilePath);

@@ -1,41 +1,11 @@
 [
   {
     "ProfesorId": 1,
-    "NombreCompleto": "Vidartito",
-    "NominaEncriptada": "NO0ZlsiUQ4yjB6kG2K8iog==",
-    "PasswordEncriptada": "Wcp9ApSGW+89qaRZIkewtQ==",
-    "MateriasQueImparte": [
-      "Programacion Avanzada I",
-      " Programacion Avanzada I"
-    ],
-    "Division": "Informatica",
-    "ClasesProfesor": null
-  },
-  {
-    "ProfesorId": 2,
-    "NombreCompleto": "ELPUTIN",
-    "NominaEncriptada": "FfwOQLgDLgfZPY3DG2xz3w==",
-    "PasswordEncriptada": "tk9rnuJPXTql8HBRPfQu4Q==",
-    "MateriasQueImparte": ["Sistemas Multimedia I"],
-    "Division": "informatica",
-    "ClasesProfesor": []
-  },
-  {
-    "ProfesorId": 3,
     "NombreCompleto": "Vidarte Rodriguez Alberto Leonel",
     "NominaEncriptada": "m/Ryi8Lp0KKgKq9SeX5Qpg==",
-    "PasswordEncriptada": "BCObj2gdmj6fCALsrhVK8w==",
-    "MateriasQueImparte": ["Programacion Avanzada", " Estructurada I"],
+    "PasswordEncriptada": "VZNmEHgw1c4OznlBNLXkwA==",
+    "MateriasQueImparte": ["Programacion Avanzada I"],
     "Division": "Informatica",
-    "ClasesProfesor": []
-  },
-  {
-    "ProfesorId": 4,
-    "NombreCompleto": "Santiago Baltazar",
-    "NominaEncriptada": "m/Ryi8Lp0KKgKq9SeX5Qpg==",
-    "PasswordEncriptada": "Y07iik7r1kxI0UoIUvtErw==",
-    "MateriasQueImparte": ["Lupes 1"],
-    "Division": "Restaurantes",
     "ClasesProfesor": []
   }
 ]
