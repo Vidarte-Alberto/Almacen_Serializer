@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 public class Program
 {
-    private const string ProfesorFilePath = "profesores.json";
+    public const string ProfesorFilePath = "profesores.json";
 
     public static void Main()
     {
@@ -33,19 +33,19 @@ public class Program
                         encriptacionHelper.CrearClavesEncriptacion();
                         break;
                     case 1:
-                        profesoresHelper.CrearProfesor("profesores.json");
+                        profesoresHelper.CrearProfesor(ProfesorFilePath);
                         break;
                     case 2:
-                        profesoresHelper.LeerProfesores("profesores.json");
+                        profesoresHelper.LeerProfesores(ProfesorFilePath);
                         break;
                     case 3:
-                        profesoresHelper.ActualizarProfesor("profesores.json");
+                        profesoresHelper.ActualizarProfesor(ProfesorFilePath);
                         break;
                     case 4:
-                        profesoresHelper.EliminarProfesor("profesores.json");
+                        profesoresHelper.EliminarProfesor(ProfesorFilePath);
                         break;
                     case 5:
-                        profesoresHelper.CambiarPassword("profesores.json");
+                        profesoresHelper.CambiarPassword(ProfesorFilePath);
                         break;
                     case 6:
                         Environment.Exit(0);
