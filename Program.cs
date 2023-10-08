@@ -11,12 +11,23 @@ public class Program
 
     public static void Main()
     {
-        var profesoresHelper = new ProfesoresHelper();
+        //Variables reutilizables
+        int id = 0;
+        string nombreCompleto = string.Empty;
+        string nominaEncriptada = string.Empty;
+        string passwordEncriptada = string.Empty;
+        string materiasInput = string.Empty;
+        string[] materiasQueImparte = new string[0];
+        string division = string.Empty;
+
+        var profesoresHelper = new ProfesorHelper();
         var encriptacionHelper = new EncriptacionHelper();
         var almacenistaHelper = new AlmacenistaHelper();
         bool auth = false;
         while (auth == false)
         {
+            Console.Clear();
+            Console.WriteLine("Bienvenido al sistema de almacen.");
             Console.WriteLine("Selecciona una opción:");
             Console.WriteLine("1. Registrar un almacenista");
             Console.WriteLine("2. Iniciar Sesion como almacenista");
@@ -28,7 +39,7 @@ public class Program
                 switch (opcion)
                 {
                     case 1:
-                        string nombreCompleto = string.Empty;
+                        nombreCompleto = string.Empty;
                         while (string.IsNullOrWhiteSpace(nombreCompleto))
                         {
                             Console.Write("Nombre completo del Almacenista: ");
@@ -38,7 +49,7 @@ public class Program
                                 Console.WriteLine("El nombre no puede estar vacío.");
                             }
                         }
-                        string passwordEncriptada = string.Empty;
+                        passwordEncriptada = string.Empty;
                         while (string.IsNullOrWhiteSpace(passwordEncriptada))
                         {
                             Console.Write("Password: ");
@@ -105,19 +116,81 @@ public class Program
                         encriptacionHelper.CrearClavesEncriptacion();
                         break;
                     case 1:
-                        profesoresHelper.CrearProfesor(ProfesorFilePath);
+                        nombreCompleto = string.Empty;
+                        while (string.IsNullOrWhiteSpace(nombreCompleto))
+                        {
+                            Console.Write("Nombre completo del profesor: ");
+                            nombreCompleto = Console.ReadLine() ?? string.Empty;
+                            if (string.IsNullOrWhiteSpace(nombreCompleto))
+                            {
+                                Console.WriteLine("El nombre no puede estar vacío.");
+                            }
+                        }
+                        nominaEncriptada = string.Empty;
+                        while (string.IsNullOrWhiteSpace(nominaEncriptada))
+                        {
+                            Console.Write("Nomina: ");
+                            nominaEncriptada = Console.ReadLine() ?? string.Empty;
+                            if (string.IsNullOrWhiteSpace(nominaEncriptada))
+                            {
+                                Console.WriteLine("La nomina no puede estar vacía.");
+                            }
+                        }
+                        passwordEncriptada = string.Empty;
+                        while (string.IsNullOrWhiteSpace(passwordEncriptada))
+                        {
+                            Console.Write("Password: ");
+                            passwordEncriptada = Console.ReadLine() ?? string.Empty;
+                            if (string.IsNullOrWhiteSpace(passwordEncriptada))
+                            {
+                                Console.WriteLine("El password no puede estar vacío.");
+                            }
+                        }
+                        Console.Write("Materias: ");
+                        materiasInput = Console.ReadLine() ?? string.Empty;
+                        materiasQueImparte = materiasInput.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        division = string.Empty;
+                        while (string.IsNullOrWhiteSpace(division))
+                        {
+                            Console.Write("Division: ");
+                            division = Console.ReadLine() ?? string.Empty;
+                            if (string.IsNullOrWhiteSpace(division))
+                            {
+                                Console.WriteLine("La division no puede estar vacía.");
+                            }
+                        }
+                        profesoresHelper.CrearProfesor(nombreCompleto, nominaEncriptada, passwordEncriptada, materiasQueImparte, division);
                         break;
                     case 2:
                         profesoresHelper.LeerProfesores(ProfesorFilePath);
                         break;
                     case 3:
-                        profesoresHelper.ActualizarProfesor(ProfesorFilePath);
+                        Console.Write("ID del Profesor: ");
+                        id = int.Parse(Console.ReadLine() ?? string.Empty);
+                        Console.WriteLine("Nombre completo del Profesor: ");
+                        nombreCompleto = Console.ReadLine() ?? string.Empty;
+                        Console.WriteLine("Nomina: ");
+                        nominaEncriptada = Console.ReadLine() ?? string.Empty;
+                        Console.WriteLine("Password: ");
+                        passwordEncriptada = Console.ReadLine() ?? string.Empty;
+                        Console.WriteLine("Materias: ");
+                        materiasInput = Console.ReadLine() ?? string.Empty;
+                        materiasQueImparte = materiasInput.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        Console.WriteLine("Division: ");
+                        division = Console.ReadLine() ?? string.Empty;
+                        profesoresHelper.EditarProfesor(id, nombreCompleto, nominaEncriptada, passwordEncriptada, materiasQueImparte, division);
                         break;
                     case 4:
-                        profesoresHelper.EliminarProfesor(ProfesorFilePath);
+                        Console.Write("ID del Profesor: ");
+                        id = int.Parse(Console.ReadLine() ?? string.Empty);
+                        profesoresHelper.EliminarProfesor(id);
                         break;
                     case 5:
-                        profesoresHelper.CambiarPassword(ProfesorFilePath);
+                        Console.Write("ID del Profesor: ");
+                        id = int.Parse(Console.ReadLine() ?? string.Empty);
+                        Console.Write("Password: ");
+                        passwordEncriptada = Console.ReadLine() ?? string.Empty;
+                        profesoresHelper.EditarPassProfesor(id, passwordEncriptada);
                         break;
                     case 6:
                         Environment.Exit(0);

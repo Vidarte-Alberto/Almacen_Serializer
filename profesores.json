@@ -1,11 +1,1 @@
-[
-  {
-    "ProfesorId": 1,
-    "NombreCompleto": "Vidarte Rodriguez Alberto Leonel",
-    "NominaEncriptada": "m/Ryi8Lp0KKgKq9SeX5Qpg==",
-    "PasswordEncriptada": "VZNmEHgw1c4OznlBNLXkwA==",
-    "MateriasQueImparte": ["Programacion Avanzada I"],
-    "Division": "Informatica",
-    "ClasesProfesor": []
-  }
-]
+[{"ProfesorId":1,"NombreCompleto":"Vidarte Rodriguez Alberto Leonel","NominaEncriptada":"3NAwW2OKaoUgk5gaEwOpJA==","PasswordEncriptada":"2Am308gQwmNNHG4tNReeyQ==","MateriasQueImparte":["Programacion Avanzada I"," Programacion Avanzada II"],"Division":"POO","ClasesProfesor":[]}]

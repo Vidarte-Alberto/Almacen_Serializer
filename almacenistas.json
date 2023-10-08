@@ -1,1 +1,7 @@
-[{"AlmacenistaId":1,"NombreCompleto":"Vidarte","PasswordEncriptada":"Wcp9ApSGW+89qaRZIkewtQ=="},{"AlmacenistaId":2,"NombreCompleto":"Vidarteeee","PasswordEncriptada":"nBqG2OV9xES6/fB9ExgdMQ=="},{"AlmacenistaId":3,"NombreCompleto":"pito","PasswordEncriptada":"pSboi/VZHVlCBY5bGhXkXg=="},{"AlmacenistaId":4,"NombreCompleto":"Vidarte Alberto","PasswordEncriptada":"Wcp9ApSGW+89qaRZIkewtQ=="}]
+[
+  {
+    "AlmacenistaId": 1,
+    "NombreCompleto": "Vidarte Alberto",
+    "PasswordEncriptada": "Wcp9ApSGW+89qaRZIkewtQ=="
+  }
+]
