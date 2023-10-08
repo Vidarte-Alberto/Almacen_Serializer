@@ -1,0 +1,14 @@
+[
+  {
+    "ProfesorId": 1,
+    "NombreCompleto": "Vidartito",
+    "NominaEncriptada": "NO0ZlsiUQ4yjB6kG2K8iog==",
+    "PasswordEncriptada": "Wcp9ApSGW+89qaRZIkewtQ==",
+    "MateriasQueImparte": [
+      "Programacion Avanzada I",
+      " Programacion Avanzada I"
+    ],
+    "Division": "Informatica",
+    "ClasesProfesor": null
+  }
+]
