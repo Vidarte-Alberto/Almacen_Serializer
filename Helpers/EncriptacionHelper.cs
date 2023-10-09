@@ -1,5 +1,5 @@
 using System.Security.Cryptography;
-class EncriptacionHelper
+public class EncriptacionHelper
 {
     public static byte[] GenerateRandomKey(int length)
     {

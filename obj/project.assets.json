@@ -60,11 +60,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/chekinvr/Documents/CETI/8vo/PAI/Parcial_2/Almacen_Serializer/Almacen_Serializer.csproj",
+      "projectUniqueName": "/Users/chekinvr/Documents/CETI/8vo/PAI/Parcial_2/Almacen/Almacen_Serializer/Almacen_Serializer.csproj",
       "projectName": "Almacen_Serializer",
-      "projectPath": "/Users/chekinvr/Documents/CETI/8vo/PAI/Parcial_2/Almacen_Serializer/Almacen_Serializer.csproj",
+      "projectPath": "/Users/chekinvr/Documents/CETI/8vo/PAI/Parcial_2/Almacen/Almacen_Serializer/Almacen_Serializer.csproj",
       "packagesPath": "/Users/chekinvr/.nuget/packages/",
-      "outputPath": "/Users/chekinvr/Documents/CETI/8vo/PAI/Parcial_2/Almacen_Serializer/obj/",
+      "outputPath": "/Users/chekinvr/Documents/CETI/8vo/PAI/Parcial_2/Almacen/Almacen_Serializer/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/chekinvr/.nuget/NuGet/NuGet.Config"

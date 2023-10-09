@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+vEn0+ntdYf9edi6OHfdae+BjFs+m1z20++97mLQm45yYnNzbFYvYImJg1+LDkTPlyemQGGpPGnsPFELcToUlA==",
+  "dgSpecHash": "L67yPfWK0fJaEdqftoc2x3TtIe1IMP4dTcsmZRlsqs2vVAtcJgmhH/inyR1UMHMMJJ9J64qg3n6/W0kwScM3/Q==",
   "success": true,
-  "projectFilePath": "/Users/chekinvr/Documents/CETI/8vo/PAI/Parcial_2/Almacen_Serializer/Almacen_Serializer.csproj",
+  "projectFilePath": "/Users/chekinvr/Documents/CETI/8vo/PAI/Parcial_2/Almacen/Almacen_Serializer/Almacen_Serializer.csproj",
   "expectedPackageFiles": [
     "/Users/chekinvr/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
   ],

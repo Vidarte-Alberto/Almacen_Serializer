@@ -8,7 +8,25 @@ public class ReporteProfesorXML
 {
     private List<Profesor> profesores;
 
-    private const string fileName = "profesores.xml";
+    private string fileName = "profesores.xml";
+
+    public ReporteProfesorXML(string filePath)
+    {
+        fileName = filePath;
+        // Inicializa la lista de profesores desde el archivo XML si existe, o crea una nueva lista
+        if (File.Exists(fileName))
+        {
+            using (var streamReader = new StreamReader(fileName))
+            {
+                var serializer = new XmlSerializer(typeof(List<Profesor>));
+                profesores = (List<Profesor>)serializer.Deserialize(streamReader) ?? new List<Profesor>();
+            }
+        }
+        else
+        {
+            profesores = new List<Profesor>();
+        }
+    }
 
     public ReporteProfesorXML()
     {

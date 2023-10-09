@@ -7,8 +7,25 @@ using Newtonsoft.Json;
 public class AlmacenistaHelperXML
 {
     private List<Almacenista> almacenistas;
-    private const string fileName = "almacenistas.xml";
+    private string fileName = "almacenistas.xml";
 
+    public AlmacenistaHelperXML(string filePath)
+    {
+        fileName = filePath;
+        // Inicializa la lista de almacenistas desde el archivo XML si existe, o crea una nueva lista
+        if (File.Exists(filePath))
+        {
+            using (var streamReader = new StreamReader(filePath))
+            {
+                var serializer = new XmlSerializer(typeof(List<Almacenista>));
+                almacenistas = (List<Almacenista>)serializer.Deserialize(streamReader) ?? new List<Almacenista>();
+            }
+        }
+        else
+        {
+            almacenistas = new List<Almacenista>();
+        }
+    }
     public AlmacenistaHelperXML()
     {
         // Inicializa la lista de almacenistas desde el archivo XML si existe, o crea una nueva lista

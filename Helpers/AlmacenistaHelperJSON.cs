@@ -6,7 +6,22 @@ using Newtonsoft.Json;
 public class AlmacenistaHelperJSON
 {
     private List<Almacenista> almacenistas;
-    private const string fileName = "almacenistas.json";
+    private string fileName = "almacenistas.json";
+
+    public AlmacenistaHelperJSON(string filePath)
+    {
+        fileName = filePath;
+        // Inicializa la lista de almacenistas desde el archivo JSON si existe, o crea una nueva lista
+        if (File.Exists(fileName))
+        {
+            string json = File.ReadAllText(fileName);
+            almacenistas = JsonConvert.DeserializeObject<List<Almacenista>>(json) ?? new List<Almacenista>();
+        }
+        else
+        {
+            almacenistas = new List<Almacenista>();
+        }
+    }
 
     public AlmacenistaHelperJSON()
     {

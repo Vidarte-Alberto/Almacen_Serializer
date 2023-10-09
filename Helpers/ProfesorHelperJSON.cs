@@ -6,7 +6,22 @@ using Newtonsoft.Json;
 public class ProfesorHelperJSON
 {
     private List<Profesor> profesores;
-    private const string fileName = "profesores.json";
+    private string fileName = "profesores.json";
+
+    public ProfesorHelperJSON(string filePath)
+    {
+        fileName = filePath;
+        // Inicializa la lista de profesores desde el archivo JSON si existe, o crea una nueva lista
+        if (File.Exists(fileName))
+        {
+            string json = File.ReadAllText(fileName);
+            profesores = JsonConvert.DeserializeObject<List<Profesor>>(json) ?? new List<Profesor>();
+        }
+        else
+        {
+            profesores = new List<Profesor>();
+        }
+    }
 
     public ProfesorHelperJSON()
     {
