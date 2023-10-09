@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfProfesor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profesor>
+    <ProfesorId>1</ProfesorId>
+    <NombreCompleto>Profesor 1</NombreCompleto>
+    <NominaEncriptada>NOMI123456</NominaEncriptada>
+    <PasswordEncriptada>12356</PasswordEncriptada>
+    <MateriasQueImparte>
+      <string>Materia 1</string>
+      <string>Materia 2</string>
+    </MateriasQueImparte>
+    <Division>Division 1</Division>
+    <ClasesProfesor />
+  </Profesor>
+</ArrayOfProfesor>

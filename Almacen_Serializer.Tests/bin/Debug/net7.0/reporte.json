@@ -1,0 +1,14 @@
+[
+  {
+    "ProfesorId": 1,
+    "NombreCompleto": "Profesor 1",
+    "NominaEncriptada": "NOMI123456",
+    "PasswordEncriptada": "12356",
+    "MateriasQueImparte": [
+      "Materia 1",
+      "Materia 2"
+    ],
+    "Division": "Division 1",
+    "ClasesProfesor": []
+  }
+]
